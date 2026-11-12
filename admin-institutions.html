@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Institutions | Placewick Admin</title>
+
+    <meta
+        name="description"
+        content="Placewick platform administration — verification queue, moderation and platform-wide analytics."
+    >
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="admin-dashboard.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-v2/favicon-32x32-v2.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-v2/favicon-16x16-v2.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-v2/apple-touch-icon-v2.png?v=2">
+    <link rel="icon" type="image/x-icon" href="favicon-v2/favicon-v2.ico?v=2">
+</head>
+
+
+<body>
+
+
+<div class="dashboard-shell">
+
+
+    <!-- Mobile overlay -->
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <a href="admin-dashboard.html">
+                <img src="images/placewick-LOGO-admin.png" alt="Placewick">
+            </a>
+            <span class="admin-mode-tag">Admin</span>
+        </div>
+
+        <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin-dashboard.html" class="sidebar-link">
+                <i class="fa-solid fa-grid-2"></i>
+                Overview
+            </a>
+
+            <a href="admin-institutions.html" class="sidebar-link active">
+                <i class="fa-solid fa-building-columns"></i>
+                Institutions
+                <span class="badge">4</span>
+            </a>
+
+            <a href="admin-companies.html" class="sidebar-link">
+                <i class="fa-solid fa-building"></i>
+                Companies
+                <span class="badge">7</span>
+            </a>
+
+            <a href="admin-students.html" class="sidebar-link">
+                <i class="fa-solid fa-user-graduate"></i>
+                Students
+            </a>
+
+            <a href="admin-postings.html" class="sidebar-link">
+                <i class="fa-solid fa-briefcase"></i>
+                Postings
+            </a>
+
+            <a href="admin-reports.html" class="sidebar-link">
+                <i class="fa-solid fa-flag"></i>
+                Reports
+                <span class="badge">3</span>
+            </a>
+
+            <a href="admin-messages.html" class="sidebar-link">
+                <i class="fa-regular fa-comments"></i>
+                Messages
+            </a>
+
+            <a href="admin-analytics.html" class="sidebar-link">
+                <i class="fa-solid fa-chart-line"></i>
+                Analytics
+            </a>
+
+            <span class="sidebar-section-label">Account</span>
+
+            <a href="admin-profile.html" class="sidebar-link">
+                <i class="fa-regular fa-user"></i>
+                Admin Profile
+            </a>
+
+            <a href="admin-settings.html" class="sidebar-link">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-avatar">TB</div>
+
+                <div class="sidebar-user-info">
+                    <h4>Tomiwa Bello</h4>
+                    <span>Super Admin</span>
+                </div>
+
+            </div>
+
+            <a href="admin-login.html" class="sidebar-logout" id="admin-logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Log out
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main -->
+
+    <div class="dashboard-main">
+
+
+        <!-- Top Header -->
+
+        <header class="dashboard-header">
+
+            <div class="dashboard-header-left">
+
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <h1>Institutions</h1>
+                    <p>Verify schools and monitor SIWES activity across institutions.</p>
+                </div>
+
+            </div>
+
+            <div class="dashboard-header-right">
+
+                <div class="header-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search students, companies, institutions">
+                </div>
+
+                <button type="button" class="icon-button" aria-label="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="dot"></span>
+                </button>
+
+                <a href="admin-profile.html" class="header-avatar">TB</a>
+
+            </div>
+
+        </header>
+
+
+        <!-- Content -->
+
+        <main class="dashboard-content">
+
+            <section class="stats-row">
+
+                <div class="stat-card">
+                    <div class="stat-icon info"><i class="fa-solid fa-building-columns"></i></div>
+                    <div>
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Registered Institutions</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon warning"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <div>
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">Pending Verification</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon success"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <div class="stat-value">20</div>
+                        <div class="stat-label">Verified</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class="fa-solid fa-user-graduate"></i></div>
+                    <div>
+                        <div class="stat-value">1,236</div>
+                        <div class="stat-label">SIWES Students Tracked</div>
+                    </div>
+                </div>
+
+            </section>
+
+            <div class="panel">
+
+                <div class="panel-header">
+                    <h3>All Institutions</h3>
+                    <a href="institution-dashboard.html" class="panel-link">Preview institution dashboard</a>
+                </div>
+
+                <div class="panel-filters" id="verify-filters">
+                    <button type="button" class="panel-filter is-active" data-filter="all">All (8)</button>
+                    <button type="button" class="panel-filter" data-filter="pending">Pending</button>
+                    <button type="button" class="panel-filter" data-filter="verified">Verified</button>
+                </div>
+
+                <div class="panel-body" id="verify-list">
+
+                        <div class="verify-row" data-type="pending">
+                            <div class="verify-logo">FP</div>
+                            <div class="verify-details">
+                                <div class="verify-details-top">
+                                    <h4>Federal Polytechnic, Nekede</h4>
+                                    <span class="verify-type-badge institution">Pending</span>
+                                </div>
+                                <span>Polytechnic (NBTE) &middot; Imo &middot; SIWES coordinator letter submitted &middot; 1 day ago</span>
+                            </div>
+                            <div class="verify-actions">
+                                <button type="button" class="verify-action-button" aria-label="View details"><i class="fa-regular fa-eye"></i></button>
+                                <button type="button" class="verify-action-button approve" data-action="approve" aria-label="Approve"><i class="fa-solid fa-check"></i></button>
+                                <button type="button" class="verify-action-button reject" data-action="reject" aria-label="Reject"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <span class="verify-resolved-tag"></span>
+                        </div>
+
+                        <div class="verify-row" data-type="pending">
+                            <div class="verify-logo">WU</div>
+                            <div class="verify-details">
+                                <div class="verify-details-top">
+                                    <h4>Westbrook University</h4>
+                                    <span class="verify-type-badge institution">Pending</span>
+                                </div>
+                                <span>University (NUC) &middot; Lagos &middot; Official email domain matched &middot; 2 days ago</span>
+                            </div>
+                            <div class="verify-actions">
+                                <button type="button" class="verify-action-button" aria-label="View details"><i class="fa-regular fa-eye"></i></button>
+                                <button type="button" class="verify-action-button approve" data-action="approve" aria-label="Approve"><i class="fa-solid fa-check"></i></button>
+                                <button type="button" class="verify-action-button reject" data-action="reject" aria-label="Reject"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <span class="verify-resolved-tag"></span>
+                        </div>
+
+                        <div class="verify-row" data-type="pending">
+                            <div class="verify-logo">KC</div>
+                            <div class="verify-details">
+                                <div class="verify-details-top">
+                                    <h4>Kogi College of Education</h4>
+                                    <span class="verify-type-badge institution">Pending</span>
+                                </div>
+                                <span>College of Education (NCCE) &middot; Kogi &middot; Awaiting regulator confirmation &middot; 3 days ago</span>
+                            </div>
+                            <div class="verify-actions">
+                                <button type="button" class="verify-action-button" aria-label="View details"><i class="fa-regular fa-eye"></i></button>
+                                <button type="button" class="verify-action-button approve" data-action="approve" aria-label="Approve"><i class="fa-solid fa-check"></i></button>
+                                <button type="button" class="verify-action-button reject" data-action="reject" aria-label="Reject"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <span class="verify-resolved-tag"></span>
+                        </div>
+
+                        <div class="verify-row" data-type="pending">
+                            <div class="verify-logo">AU</div>
+                            <div class="verify-details">
+                                <div class="verify-details-top">
+                                    <h4>Abuja Institute of Technology</h4>
+                                    <span class="verify-type-badge institution">Pending</span>
+                                </div>
+                                <span>Monotechnic (NBTE) &middot; FCT &middot; Documents incomplete &middot; 5 days ago</span>
+                            </div>
+                            <div class="verify-actions">
+                                <button type="button" class="verify-action-button" aria-label="View details"><i class="fa-regular fa-eye"></i></button>
+                                <button type="button" class="verify-action-button approve" data-action="approve" aria-label="Approve"><i class="fa-solid fa-check"></i></button>
+                                <button type="button" class="verify-action-button reject" data-action="reject" aria-label="Reject"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <span class="verify-resolved-tag"></span>
+                        </div>
+
+                        <div class="verify-row" data-type="verified">
+                            <div class="verify-logo">UL</div>
+                            <div class="verify-details">
+                                <div class="verify-details-top">
+                                    <h4>University of Lagos</h4>
+                                    <span class="verify-type-badge institution">Verified</span>
+                                </div>
+                                <span>University (NUC) &middot; Lagos &middot; 412 students &middot; 38 partner companies</span>
+                            </div>
+                            <div class="verify-actions">
+                                <a href="institution-dashboard.html" class="verify-action-button" aria-label="Preview institution dashboard" title="Preview dashboard"><i class="fa-regular fa-eye"></i></a>
+                            </div>
+                            <span class="verify-resolved-tag"></span>
+                        </div>
+
+                        <div class="verify-row" data-type="verified">
+                            <div class="verify-logo">OA</div>
+                            <div class="verify-details">
+                                <div class="verify-details-top">
+                                    <h4>Obafemi Awolowo University</h4>
+                                    <span class="verify-type-badge institution">Verified</span>
+                                </div>
+                                <span>University (NUC) &middot; Osun &middot; 358 students &middot; 29 partner companies</span>
+                            </div>
+                            <div class="verify-actions">
+                                <a href="institution-dashboard.html" class="verify-action-button" aria-label="Preview institution dashboard" title="Preview dashboard"><i class="fa-regular fa-eye"></i></a>
+                            </div>
+                            <span class="verify-resolved-tag"></span>
+                        </div>
+
+                        <div class="verify-row" data-type="verified">
+                            <div class="verify-logo">YT</div>
+                            <div class="verify-details">
+                                <div class="verify-details-top">
+                                    <h4>Yaba College of Technology</h4>
+                                    <span class="verify-type-badge institution">Verified</span>
+                                </div>
+                                <span>Polytechnic (NBTE) &middot; Lagos &middot; 276 students &middot; 31 partner companies</span>
+                            </div>
+                            <div class="verify-actions">
+                                <a href="institution-dashboard.html" class="verify-action-button" aria-label="Preview institution dashboard" title="Preview dashboard"><i class="fa-regular fa-eye"></i></a>
+                            </div>
+                            <span class="verify-resolved-tag"></span>
+                        </div>
+
+                        <div class="verify-row" data-type="verified">
+                            <div class="verify-logo">FU</div>
+                            <div class="verify-details">
+                                <div class="verify-details-top">
+                                    <h4>Federal University of Technology, Akure</h4>
+                                    <span class="verify-type-badge institution">Verified</span>
+                                </div>
+                                <span>University (NUC) &middot; Ondo &middot; 190 students &middot; 17 partner companies</span>
+                            </div>
+                            <div class="verify-actions">
+                                <a href="institution-dashboard.html" class="verify-action-button" aria-label="Preview institution dashboard" title="Preview dashboard"><i class="fa-regular fa-eye"></i></a>
+                            </div>
+                            <span class="verify-resolved-tag"></span>
+                        </div>
+
+                </div>
+
+                <div class="panel-empty" id="verify-empty" style="display: none;">
+                    <i class="fa-solid fa-inbox"></i>
+                    <p>No institutions in this category.</p>
+                </div>
+
+            </div>
+
+        </main>
+
+
+    </div>
+
+
+</div>
+
+
+<script src="applicant-dashboard.js"></script>
+<script src="admin-dashboard.js"></script>
+
+</body>
+
+</html>
