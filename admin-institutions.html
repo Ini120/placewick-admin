@@ -37,6 +37,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-v2/favicon-16x16-v2.png?v=2">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon-v2/apple-touch-icon-v2.png?v=2">
     <link rel="icon" type="image/x-icon" href="favicon-v2/favicon-v2.ico?v=2">
+    <link rel="stylesheet" href="admin-extra.css">
 </head>
 
 
@@ -67,74 +68,26 @@
         </button>
 
         <nav class="sidebar-nav">
-
-            <a href="admin-dashboard.html" class="sidebar-link">
-                <i class="fa-solid fa-grid-2"></i>
-                Overview
-            </a>
-
-            <a href="admin-institutions.html" class="sidebar-link active">
-                <i class="fa-solid fa-building-columns"></i>
-                Institutions
-                <span class="badge">4</span>
-            </a>
-
-            <a href="admin-companies.html" class="sidebar-link">
-                <i class="fa-solid fa-building"></i>
-                Companies
-                <span class="badge">7</span>
-            </a>
-
-            <a href="admin-students.html" class="sidebar-link">
-                <i class="fa-solid fa-user-graduate"></i>
-                Students
-            </a>
-
-            <a href="admin-postings.html" class="sidebar-link">
-                <i class="fa-solid fa-briefcase"></i>
-                Postings
-            </a>
-
-            <a href="admin-reports.html" class="sidebar-link">
-                <i class="fa-solid fa-flag"></i>
-                Reports
-                <span class="badge">3</span>
-            </a>
-
-            <a href="admin-messages.html" class="sidebar-link">
-                <i class="fa-regular fa-comments"></i>
-                Messages
-            </a>
-
-            <a href="admin-analytics.html" class="sidebar-link">
-                <i class="fa-solid fa-chart-line"></i>
-                Analytics
-            </a>
-
-            <span class="sidebar-section-label">Account</span>
-
-            <a href="admin-profile.html" class="sidebar-link">
-                <i class="fa-regular fa-user"></i>
-                Admin Profile
-            </a>
-
-            <a href="admin-settings.html" class="sidebar-link">
-                <i class="fa-solid fa-gear"></i>
-                Settings
-            </a>
-
-        </nav>
+<a href="admin-dashboard.html" class="sidebar-link"><i class="fa-solid fa-grid-2"></i> Overview </a>
+<a href="admin-institutions.html" class="sidebar-link active"><i class="fa-solid fa-building-columns"></i> Institutions <span class="badge" data-badge="inst" hidden></span></a>
+<a href="admin-companies.html" class="sidebar-link"><i class="fa-solid fa-building"></i> Companies <span class="badge" data-badge="comp" hidden></span></a>
+<a href="admin-students.html" class="sidebar-link"><i class="fa-solid fa-user-graduate"></i> Students </a>
+<span class="sidebar-link is-soon"><i class="fa-solid fa-briefcase"></i> Postings <span class="soon-tag">Soon</span></span>
+<span class="sidebar-link is-soon"><i class="fa-solid fa-flag"></i> Reports <span class="soon-tag">Soon</span></span>
+<span class="sidebar-link is-soon"><i class="fa-regular fa-comments"></i> Messages <span class="soon-tag">Soon</span></span>
+<span class="sidebar-link is-soon"><i class="fa-solid fa-chart-line"></i> Analytics <span class="soon-tag">Soon</span></span>
+</nav>
 
 
         <div class="sidebar-footer">
 
             <div class="sidebar-user">
 
-                <div class="sidebar-avatar">TB</div>
+                <div class="sidebar-avatar"></div>
 
                 <div class="sidebar-user-info">
-                    <h4>Tomiwa Bello</h4>
-                    <span>Super Admin</span>
+                    <h4>Admin</h4>
+                    <span>Administrator</span>
                 </div>
 
             </div>
@@ -166,24 +119,18 @@
 
                 <div>
                     <h1>Institutions</h1>
-                    <p>Verify schools and monitor SIWES activity across institutions.</p>
+<p>Verify the institutions that sign up.</p>
                 </div>
 
             </div>
 
             <div class="dashboard-header-right">
 
-                <div class="header-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search students, companies, institutions">
-                </div>
+                
 
-                <button type="button" class="icon-button" aria-label="Notifications">
-                    <i class="fa-regular fa-bell"></i>
-                    <span class="dot"></span>
-                </button>
+                
 
-                <a href="admin-profile.html" class="header-avatar">TB</a>
+                <span class="header-avatar"></span>
 
             </div>
 
@@ -193,196 +140,20 @@
         <!-- Content -->
 
         <main class="dashboard-content">
+<div class="page-error" id="page-error" hidden></div>
 
-            <section class="stats-row">
-
-                <div class="stat-card">
-                    <div class="stat-icon info"><i class="fa-solid fa-building-columns"></i></div>
-                    <div>
-                        <div class="stat-value">24</div>
-                        <div class="stat-label">Registered Institutions</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon warning"><i class="fa-solid fa-hourglass-half"></i></div>
-                    <div>
-                        <div class="stat-value">4</div>
-                        <div class="stat-label">Pending Verification</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon success"><i class="fa-solid fa-circle-check"></i></div>
-                    <div>
-                        <div class="stat-value">20</div>
-                        <div class="stat-label">Verified</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon purple"><i class="fa-solid fa-user-graduate"></i></div>
-                    <div>
-                        <div class="stat-value">1,236</div>
-                        <div class="stat-label">SIWES Students Tracked</div>
-                    </div>
-                </div>
-
-            </section>
-
-            <div class="panel">
-
-                <div class="panel-header">
-                    <h3>All Institutions</h3>
-                    <a href="institution-dashboard.html" class="panel-link">Preview institution dashboard</a>
-                </div>
-
-                <div class="panel-filters" id="verify-filters">
-                    <button type="button" class="panel-filter is-active" data-filter="all">All (8)</button>
-                    <button type="button" class="panel-filter" data-filter="pending">Pending</button>
-                    <button type="button" class="panel-filter" data-filter="verified">Verified</button>
-                </div>
-
-                <div class="panel-body" id="verify-list">
-
-                        <div class="verify-row" data-type="pending">
-                            <div class="verify-logo">FP</div>
-                            <div class="verify-details">
-                                <div class="verify-details-top">
-                                    <h4>Federal Polytechnic, Nekede</h4>
-                                    <span class="verify-type-badge institution">Pending</span>
-                                </div>
-                                <span>Polytechnic (NBTE) &middot; Imo &middot; SIWES coordinator letter submitted &middot; 1 day ago</span>
-                            </div>
-                            <div class="verify-actions">
-                                <button type="button" class="verify-action-button" aria-label="View details"><i class="fa-regular fa-eye"></i></button>
-                                <button type="button" class="verify-action-button approve" data-action="approve" aria-label="Approve"><i class="fa-solid fa-check"></i></button>
-                                <button type="button" class="verify-action-button reject" data-action="reject" aria-label="Reject"><i class="fa-solid fa-xmark"></i></button>
-                            </div>
-                            <span class="verify-resolved-tag"></span>
-                        </div>
-
-                        <div class="verify-row" data-type="pending">
-                            <div class="verify-logo">WU</div>
-                            <div class="verify-details">
-                                <div class="verify-details-top">
-                                    <h4>Westbrook University</h4>
-                                    <span class="verify-type-badge institution">Pending</span>
-                                </div>
-                                <span>University (NUC) &middot; Lagos &middot; Official email domain matched &middot; 2 days ago</span>
-                            </div>
-                            <div class="verify-actions">
-                                <button type="button" class="verify-action-button" aria-label="View details"><i class="fa-regular fa-eye"></i></button>
-                                <button type="button" class="verify-action-button approve" data-action="approve" aria-label="Approve"><i class="fa-solid fa-check"></i></button>
-                                <button type="button" class="verify-action-button reject" data-action="reject" aria-label="Reject"><i class="fa-solid fa-xmark"></i></button>
-                            </div>
-                            <span class="verify-resolved-tag"></span>
-                        </div>
-
-                        <div class="verify-row" data-type="pending">
-                            <div class="verify-logo">KC</div>
-                            <div class="verify-details">
-                                <div class="verify-details-top">
-                                    <h4>Kogi College of Education</h4>
-                                    <span class="verify-type-badge institution">Pending</span>
-                                </div>
-                                <span>College of Education (NCCE) &middot; Kogi &middot; Awaiting regulator confirmation &middot; 3 days ago</span>
-                            </div>
-                            <div class="verify-actions">
-                                <button type="button" class="verify-action-button" aria-label="View details"><i class="fa-regular fa-eye"></i></button>
-                                <button type="button" class="verify-action-button approve" data-action="approve" aria-label="Approve"><i class="fa-solid fa-check"></i></button>
-                                <button type="button" class="verify-action-button reject" data-action="reject" aria-label="Reject"><i class="fa-solid fa-xmark"></i></button>
-                            </div>
-                            <span class="verify-resolved-tag"></span>
-                        </div>
-
-                        <div class="verify-row" data-type="pending">
-                            <div class="verify-logo">AU</div>
-                            <div class="verify-details">
-                                <div class="verify-details-top">
-                                    <h4>Abuja Institute of Technology</h4>
-                                    <span class="verify-type-badge institution">Pending</span>
-                                </div>
-                                <span>Monotechnic (NBTE) &middot; FCT &middot; Documents incomplete &middot; 5 days ago</span>
-                            </div>
-                            <div class="verify-actions">
-                                <button type="button" class="verify-action-button" aria-label="View details"><i class="fa-regular fa-eye"></i></button>
-                                <button type="button" class="verify-action-button approve" data-action="approve" aria-label="Approve"><i class="fa-solid fa-check"></i></button>
-                                <button type="button" class="verify-action-button reject" data-action="reject" aria-label="Reject"><i class="fa-solid fa-xmark"></i></button>
-                            </div>
-                            <span class="verify-resolved-tag"></span>
-                        </div>
-
-                        <div class="verify-row" data-type="verified">
-                            <div class="verify-logo">UL</div>
-                            <div class="verify-details">
-                                <div class="verify-details-top">
-                                    <h4>University of Lagos</h4>
-                                    <span class="verify-type-badge institution">Verified</span>
-                                </div>
-                                <span>University (NUC) &middot; Lagos &middot; 412 students &middot; 38 partner companies</span>
-                            </div>
-                            <div class="verify-actions">
-                                <a href="institution-dashboard.html" class="verify-action-button" aria-label="Preview institution dashboard" title="Preview dashboard"><i class="fa-regular fa-eye"></i></a>
-                            </div>
-                            <span class="verify-resolved-tag"></span>
-                        </div>
-
-                        <div class="verify-row" data-type="verified">
-                            <div class="verify-logo">OA</div>
-                            <div class="verify-details">
-                                <div class="verify-details-top">
-                                    <h4>Obafemi Awolowo University</h4>
-                                    <span class="verify-type-badge institution">Verified</span>
-                                </div>
-                                <span>University (NUC) &middot; Osun &middot; 358 students &middot; 29 partner companies</span>
-                            </div>
-                            <div class="verify-actions">
-                                <a href="institution-dashboard.html" class="verify-action-button" aria-label="Preview institution dashboard" title="Preview dashboard"><i class="fa-regular fa-eye"></i></a>
-                            </div>
-                            <span class="verify-resolved-tag"></span>
-                        </div>
-
-                        <div class="verify-row" data-type="verified">
-                            <div class="verify-logo">YT</div>
-                            <div class="verify-details">
-                                <div class="verify-details-top">
-                                    <h4>Yaba College of Technology</h4>
-                                    <span class="verify-type-badge institution">Verified</span>
-                                </div>
-                                <span>Polytechnic (NBTE) &middot; Lagos &middot; 276 students &middot; 31 partner companies</span>
-                            </div>
-                            <div class="verify-actions">
-                                <a href="institution-dashboard.html" class="verify-action-button" aria-label="Preview institution dashboard" title="Preview dashboard"><i class="fa-regular fa-eye"></i></a>
-                            </div>
-                            <span class="verify-resolved-tag"></span>
-                        </div>
-
-                        <div class="verify-row" data-type="verified">
-                            <div class="verify-logo">FU</div>
-                            <div class="verify-details">
-                                <div class="verify-details-top">
-                                    <h4>Federal University of Technology, Akure</h4>
-                                    <span class="verify-type-badge institution">Verified</span>
-                                </div>
-                                <span>University (NUC) &middot; Ondo &middot; 190 students &middot; 17 partner companies</span>
-                            </div>
-                            <div class="verify-actions">
-                                <a href="institution-dashboard.html" class="verify-action-button" aria-label="Preview institution dashboard" title="Preview dashboard"><i class="fa-regular fa-eye"></i></a>
-                            </div>
-                            <span class="verify-resolved-tag"></span>
-                        </div>
-
-                </div>
-
-                <div class="panel-empty" id="verify-empty" style="display: none;">
-                    <i class="fa-solid fa-inbox"></i>
-                    <p>No institutions in this category.</p>
-                </div>
-
-            </div>
-
-        </main>
+<div class="panel">
+  <div class="panel-header"><h3>All Institutions</h3></div>
+  <div class="panel-filters" id="filters">
+    <button type="button" class="panel-filter is-active" data-filter="pending">Pending</button>
+    <button type="button" class="panel-filter" data-filter="verified">Verified</button>
+    <button type="button" class="panel-filter" data-filter="rejected">Rejected</button>
+    <button type="button" class="panel-filter" data-filter="all">All</button>
+  </div>
+  <div class="search-box"><input type="text" id="search" placeholder="Search by name, location or email"></div>
+  <div class="panel-body" id="list"></div>
+</div>
+</main>
 
 
     </div>
@@ -391,8 +162,87 @@
 </div>
 
 
-<script src="applicant-dashboard.js"></script>
-<script src="admin-dashboard.js"></script>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js"></script>
+<script src="admin.js"></script>
+<script>
+(function () {
+  var M = window.placewickAdmin, esc = M.esc;
+  function g(id) { return document.getElementById(id); }
+  function set(id, v) { var e = g(id); if (e) { e.textContent = v; } }
+  function cnt(table, col, val) {
+    var q = M.sb.from(table).select("id", { count: "exact", head: true });
+    if (col) { q = q.eq(col, val); }
+    return q.then(function (r) { return r.count || 0; });
+  }
+
+  var KIND = "institution", TABLE = "institutions", filter = "pending", q = "", rows = [], emails = {};
+  function line(r) {
+    return [r.type && r.type.replace(/_/g, ' '), r.state, r.contact_role].filter(Boolean).join(' · ');
+  }
+  function actions(r) {
+    var h = '<button type="button" class="vbtn view" data-view="' + r.id + '">View</button>';
+    if (r.status !== "verified") { h += '<button type="button" class="vbtn approve" data-set="verified" data-id="' + r.id + '">Verify</button>'; }
+    if (r.status === "pending") { h += '<button type="button" class="vbtn reject" data-set="rejected" data-id="' + r.id + '">Reject</button>'; }
+    if (r.status === "verified") { h += '<button type="button" class="vbtn reject" data-set="pending" data-id="' + r.id + '">Revoke</button>'; }
+    return h;
+  }
+  function draw() {
+    ["all", "pending", "verified", "rejected"].forEach(function (k) {
+      var n = rows.filter(function (r) { return k === "all" || r.status === k; }).length;
+      var b = document.querySelector('[data-filter="' + k + '"]'); if (b) { b.textContent = k[0].toUpperCase() + k.slice(1) + " (" + n + ")"; }
+    });
+    var list = rows.filter(function (r) {
+      return (filter === "all" || r.status === filter) && (!q || [r.name, line(r), emails[r.owner_id] || ""].join(" ").toLowerCase().indexOf(q) !== -1);
+    });
+    g("list").innerHTML = list.length ? list.map(function (r) {
+      return '<div class="verify-row"><div class="verify-logo">' + esc(M.initials(r.name)) + '</div><div class="verify-details"><div class="verify-details-top"><h4>' + esc(r.name) + '</h4>' + M.statusBadge(r.status) + '</div><span>' + esc(line(r)) + ' &middot; ' + esc(emails[r.owner_id] || "") + ' &middot; ' + M.ago(r.created_at) + '</span></div><div class="verify-actions">' + actions(r) + '</div></div>';
+    }).join("") : M.empty("fa-circle-check", filter === "pending" ? "Nothing waiting" : "Nothing here", filter === "pending" ? "No institutions are waiting for verification." : "No institutions match this view.");
+  }
+  function view(r) {
+    var facts = [['Type', r.type && r.type.replace(/_/g, ' ')], ['State', r.state], ['Contact role', r.contact_role], ['Official email', r.official_email], ['Account email', emails[r.owner_id]]];
+    var html = '<button type="button" class="modal-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button><h2>' + esc(r.name) + '</h2><ul class="facts"><li><span>Status</span><span>' + esc(r.status) + '</span></li>' +
+      facts.map(function (f) { return '<li><span>' + f[0] + '</span><span>' + esc(f[1] || "Not provided") + '</span></li>'; }).join("") + '<li><span>Registered</span><span>' + new Date(r.created_at).toLocaleDateString("en-GB") + '</span></li></ul>' +
+      '';
+    var ov = document.createElement("div"); ov.className = "modal-overlay"; ov.innerHTML = '<div class="modal-card" role="dialog" aria-modal="true">' + html + '</div>';
+    document.body.appendChild(ov);
+    ov.addEventListener("click", function (e) { if (e.target === ov || e.target.closest(".modal-close")) { ov.remove(); } });
+  }
+  M.init().then(function () {
+    M.badges();
+    return M.sb.from(TABLE).select("*").order("created_at", { ascending: false });
+  }).then(function (r) {
+    if (r.error) { throw r.error; }
+    rows = r.data || [];
+    var ids = rows.map(function (x) { return x.owner_id; });
+    return (ids.length ? M.sb.from("profiles").select("id,email").in("id", ids) : Promise.resolve({ data: [] })).then(function (p) {
+      (p.data || []).forEach(function (x) { emails[x.id] = x.email; });
+      draw();
+    });
+  }).catch(function (e) { console.error(e); M.fail(); });
+  g("filters").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-filter]"); if (!b) { return; }
+    document.querySelectorAll("#filters .panel-filter").forEach(function (x) { x.classList.remove("is-active"); });
+    b.classList.add("is-active"); filter = b.dataset.filter; draw();
+  });
+  g("search").addEventListener("input", function () { q = this.value.trim().toLowerCase(); draw(); });
+  g("list").addEventListener("click", function (e) {
+    var v = e.target.closest("[data-view]");
+    if (v) { var r = rows.filter(function (x) { return x.id === v.dataset.view; })[0]; if (r) { view(r); } return; }
+    var b = e.target.closest("[data-set]"); if (!b) { return; }
+    var r2 = rows.filter(function (x) { return x.id === b.dataset.id; })[0]; if (!r2) { return; }
+    var to = b.dataset.set;
+    if (to !== "verified" && !confirm((to === "rejected" ? "Reject " : "Revoke verification for ") + r2.name + "?")) { return; }
+    b.disabled = true;
+    M.setStatus(KIND, r2.id, to).then(function (res) {
+      if (res.error) { b.disabled = false; M.toast("Could not update. Please try again."); return; }
+      r2.status = to; draw(); M.badges();
+      M.toast(to === "verified" ? r2.name + " verified" : to === "rejected" ? r2.name + " rejected" : "Verification revoked");
+    });
+  });
+})();
+</script>
 
 </body>
 

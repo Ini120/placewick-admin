@@ -1,78 +1,52 @@
-// Placewick — Admin login (prototype only)
-//
-// IMPORTANT: this is a front-end demo gate, not real authentication.
-// It exists so the admin dashboard mockup isn't reachable by just typing
-// its URL without going through a "sign in" step first. It stores a flag
-// in sessionStorage and admin-dashboard.js checks for that flag before
-// rendering. There is no password check, no server call and no real
-// session — anyone can open devtools and set the flag themselves.
-//
-// When a real backend exists, replace this file's submit handler with an
-// actual API call (e.g. POST /api/admin/login) that verifies credentials
-// server-side, checks the user has an admin role, and returns a JWT or
-// sets an HttpOnly session cookie. The redirect at the bottom of this
-// file is the only line that should survive that change.
-
+// Placewick Admin: staff sign-in. Only accounts with the admin role are let in.
 (function () {
+    "use strict";
+    var cfg = window.PLACEWICK_SUPABASE || {};
+    var sb = (cfg.url && cfg.key && window.supabase) ? window.supabase.createClient(cfg.url, cfg.key) : null;
+    var form = document.getElementById("admin-login-form");
+    var errorBox = document.getElementById("admin-login-error");
+    var pw = document.getElementById("admin-password");
+    var toggle = document.getElementById("admin-password-toggle");
 
-    const form = document.getElementById("admin-login-form");
-    const errorBox = document.getElementById("admin-login-error");
-    const passwordInput = document.getElementById("admin-password");
-    const passwordToggle = document.getElementById("admin-password-toggle");
+    if (toggle && pw) {
+        toggle.addEventListener("click", function () {
+            var hidden = pw.type === "password";
+            pw.type = hidden ? "text" : "password";
+            var icon = toggle.querySelector("i");
+            if (icon) { icon.classList.toggle("fa-eye", !hidden); icon.classList.toggle("fa-eye-slash", hidden); }
+            toggle.setAttribute("aria-label", hidden ? "Hide password" : "Show password");
+        });
+    }
+    function showError(m) {
+        document.getElementById("admin-login-error-text").textContent = m;
+        errorBox.classList.add("is-visible");
+    }
+    if (!form) { return; }
+    if (/denied=1/.test(location.search)) { showError("That account does not have admin access."); }
 
-    if (passwordToggle && passwordInput) {
-        passwordToggle.addEventListener("click", function () {
-            const isHidden = passwordInput.type === "password";
-            passwordInput.type = isHidden ? "text" : "password";
-
-            const icon = passwordToggle.querySelector("i");
-            if (icon) {
-                icon.classList.toggle("fa-eye", !isHidden);
-                icon.classList.toggle("fa-eye-slash", isHidden);
-            }
-
-            passwordToggle.setAttribute(
-                "aria-label",
-                isHidden ? "Hide password" : "Show password"
-            );
+    // Already signed in as an admin? Go straight in.
+    if (sb) {
+        sb.auth.getSession().then(function (r) {
+            var s = r.data && r.data.session; if (!s) { return; }
+            sb.from("profiles").select("role").eq("id", s.user.id).maybeSingle().then(function (p) {
+                if (p.data && p.data.role === "admin") { location.replace("admin-dashboard.html"); }
+            });
         });
     }
 
-    if (!form) {
-        return;
-    }
-
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const email = document.getElementById("admin-email").value.trim();
-        const password = passwordInput.value;
-
-        if (!email || !password) {
-            showError("Please enter your work email and password.");
-            return;
-        }
-
-        // Demo-only "sign in": accept anything and mark this tab's
-        // session as an admin session. Replace with a real API call
-        // before this ships past prototype stage.
-        try {
-            sessionStorage.setItem("placewickAdminSession", "true");
-            sessionStorage.setItem("placewickAdminEmail", email);
-        } catch (err) {
-            // sessionStorage unavailable (private mode, etc.) — fall
-            // through and redirect anyway, since this is a demo gate.
-        }
-
-        window.location.href = "admin-dashboard.html";
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        errorBox.classList.remove("is-visible");
+        var email = document.getElementById("admin-email").value.trim();
+        if (!email || !pw.value) { showError("Please enter your work email and password."); return; }
+        if (!sb) { showError("Sign-in is not connected yet."); return; }
+        var btn = form.querySelector("button[type=submit]"); btn.disabled = true;
+        sb.auth.signInWithPassword({ email: email, password: pw.value }).then(function (r) {
+            if (r.error || !r.data.user) { btn.disabled = false; showError("Incorrect email or password. Please try again."); return; }
+            sb.from("profiles").select("role").eq("id", r.data.user.id).maybeSingle().then(function (p) {
+                if (p.data && p.data.role === "admin") { location.replace("admin-dashboard.html"); return; }
+                sb.auth.signOut().then(function () { btn.disabled = false; showError("That account does not have admin access."); });
+            });
+        });
     });
-
-    function showError(message) {
-        const textEl = document.getElementById("admin-login-error-text");
-        if (textEl) {
-            textEl.textContent = message;
-        }
-        errorBox.classList.add("is-visible");
-    }
-
 })();
